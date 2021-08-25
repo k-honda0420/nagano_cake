@@ -24,7 +24,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <% if user_signed_in? %>
+                <% if customer_signed_in? %>
                 <li class="nav-item">
                     <%= link_to root_path, class:"nav-link" do %>
                     <span class="fas fa-home" aria-hidden="true">Home</span>
@@ -41,44 +41,40 @@
                     <% end %>
                 </li>
                 <li class="nav-item">
-                    <%= link_to destroy_user_session_path, method: :delete, class:"nav-link" do %>
+                    <%= link_to destroy_customer_session_path, method: :delete, class:"nav-link" do %>
                     <span class="fas fa-sign-out-alt" aria-hidden="true">logout</span>
                     <% end %>
                 </li>
             <% else %>
                 <li class="nav-item">
-                    <i ></i> 
+                    <i ></i>
                         <%= link_to root_path, class:"nav-link" do %>
                         <span class="fas fa-home" aria-hidden="true">Home</span>
                         <% end %>
-                    
                 </li>
                 <li class="nav-item">
 
                         <%= link_to about_path, class:"nav-link" do %>
                         <span class="fas fa-link" aria-hidden="true">About</span>
                         <% end %>
-                    
-                </li>  
+                </li>
                 <li class="nav-item">
-
-                        <%= link_to new_user_registration_path, class:"nav-link" do %>
+                        <%= link_to new_customer_registration_path, class:"nav-link" do %>
                         <span class="fas fa-user-plus" aria-hidden="true">sign up</span>
                         <% end %>
-                    
-                </li>  
-                <li class="nav-item">
 
-                        <%= link_to new_user_session_path, class:"nav-link" do %>
+                </li>
+                <li class="nav-item">
+                        <%= link_to new_customer_session_path, class:"nav-link" do %>
                         <span class="fas fa-sign-in-alt" aria-hidden="true">login</span>
                         <% end %>
-                    
+
                 </li>
                 <% end %>
             </ul>
         </div>
     </div>
-    
+
 </nav>
     <% flash.each do |key, value| %>
     <%= content_tag(:div, value, class: "#{key}") %>

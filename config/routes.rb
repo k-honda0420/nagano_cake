@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
 
+
   devise_for :customers
 root to: 'public/homes#top'
 get 'about' => 'public/homes#about'
 
+  scope module: 'public' do
+    get 'customers/edit' => 'customers#edit'
+    get 'customers/my_page' => 'customers#show'
+   end
 
   namespace :admin do
     get 'orders/index'
