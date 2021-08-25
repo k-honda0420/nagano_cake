@@ -1,0 +1,29 @@
+<h1>Admin::Homes#top</h1>
+<p>Find me in app/views/admin/homes/top.html.erb</p>
+
+
+<div class="container">
+  <div class="row">
+
+<div class="col-mx-1">
+<h1>User detail</h1>
+      <table class="table user-show">
+
+		<th>注文番号</th>
+		<th>注文時刻</th>
+		<th>請求額</th>
+		<th>注文ステータス</th>
+		<th></th>
+         <% @order.each do |order| %>
+            <tr>
+						<td><%= order.id %></td>
+						<td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+						<td><%= order.total_payment %></td>
+						<td><%= order.status %></td>
+						<td><%= link_to "Edit", admin_order_path(customer), class:"btn btn-success"%></td>
+						<% end %>
+          </tr>
+        </table>
+</div>
+</div>
+</div>

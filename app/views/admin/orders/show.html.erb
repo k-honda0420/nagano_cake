@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class="col-mx-1">
+      <h1>Order detail</h1>
+      <p>注文ID</p>
+      <%= @order.id %>
+      <p>会員ID</p>
+      <%= @order.customer_id %>
+      <p>配送先郵便番号</p>
+      <%= @order.postal_code %>
+      <p>配送先住所</p>
+      <%= @order.address %>
+      <p>配送先宛名</p>
+      <%= @order.name %>
+      <p>送料</p>
+      <%= @order.shipping_cost %>
+      <p>請求額</p>
+      <%= @order.total_payment %>
+      <p>支払方法</p>
+      <%= @order.payment_method %>
+      <p>注文ステータス</p>
+      <%= @order.status %>
+      <p>登録日時</p>
+      <%= @order.created_at.strftime('%Y/%m/%d %H:%M') %>
+      <p>更新日時</p>
+      <%= @order.updated_at.strftime('%Y/%m/%d %H:%M') %>
+      <%= link_to "back", admin_orders_path(customer), class:"btn btn-success"%>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="container">
+<h1>Admin::Items#edit</h1>
+<p>Find me in app/views/admin/items/edit.html.erb</p>
+
+
+  <div class="row">
+
+   <div class="col-lx-1">
+<h1>Item info</h1>
+
+<%= form_with model:@item, url:admin_item_path, local:true do |f| %>
+  <h3><%= f.label :NAME %></h3>
+  <%= f.text_field :name, placeholder:"商品名" %>
+  <br><br>
+  <h3><%= f.label :ジャンル %></h3>
+
+  <%= f.collection_select :genre_id, Genre.all, :id, :name %>
+  <br>
+  <label for="inputImage">ProfileImage</label>
+  <br>
+
+  <%= attachment_image_tag @item, :image, :fill, 60, 60, fallback: "no_image.jpg"%>
+
+  <br>
+
+  <br>
+  <h3><%= f.label :商品説明 %></h3>
+  <%= f.text_area :introduction, placeholder:"商品説明"%>
+  <br>
+  <h3><%= f.label :価格 %></h3>
+  <%= f.text_field :price, placeholder:"価格" %>
+  <br><br>
+  <%= f.submit "Update" %>
+<% end %>
+
+

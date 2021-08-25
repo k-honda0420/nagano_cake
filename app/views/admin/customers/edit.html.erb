@@ -1,0 +1,43 @@
+<h1>Admin::Customers#edit</h1>
+<p>Find me in app/views/admin/customers/edit.html.erb</p>
+
+
+<div class="container">
+  <div class="row">
+   <div class="col-lx-1">
+     <h1>Customers info</h1>
+     
+     <%= form_with model:@customers, url:admin_customer_path, local:true do |f| %>
+     <h3><%= f.label :姓 %><%= f.label :名 %></h3>
+     <%= f.text_field :last_name, placeholder:"姓" %><%= f.text_field :first_name, placeholder:"名" %>
+     <br><br>
+     
+     <h3><%= f.label :姓（カナ） %><%= f.label :名（カナ） %></h3>
+     <%= f.text_field :last_name_kana, placeholder:"姓（カナ）" %><%= f.text_field :first_name_kana, placeholder:"名（カナ）" %>
+     <br><br>
+     
+     <h3><%= f.label :メールアドレス %></h3>
+     <%= f.text_field :email, placeholder:"email" %>
+     
+     
+     <h3><%= f.label :郵便番号 %></h3>
+     <%= f.text_field :postal_code, placeholder:"郵便番号" %>
+     
+     <h3><%= f.label :住所 %></h3>
+     <%= f.text_field :address, placeholder:"住所" %>
+     
+     <h3><%= f.label :電話番号 %></h3>
+     <%= f.text_field :telephone_number, placeholder:"電話番号" %>
+     
+     <h3><%= f.label :会員ステータス %></h3>
+     <%= f.text_field :is_deleted, placeholder:"ステータス" %>
+     
+     
+  <br><br>
+  <%= f.submit "Update" %>
+<% end %>
+</div>
+</div>
+</div>
+
+

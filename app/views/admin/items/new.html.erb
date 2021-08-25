@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+   <div class="col-md-4">
+
+<h1>New Item</h1>
+<%= form_with(model:@item, url:admin_items_path(@item), method: :POST, local:true) do |f| %>
+
+
+<!-- イメージ -->
+  <label for="inputImage">item Image</label><br>
+  <%= f.file_field :image, placeholder: "商品画像" %>
+  <br>
+  <br>
+<!-- イメージ終わり -->
+  <%= f.label :ジャンル %><br>
+  <%= f.collection_select :genre_id, Genre.all, :id, :name, include_blank: "選択して下さい" %>
+  <br>
+  <br>
+
+<div>
+  <%= f.label :NAME %>
+</div>
+<div>
+  <%= f.text_field :name %>
+</div>
+<div>
+  <%= f.label :商品説明 %>
+</div>
+<div>
+  <%= f.text_area :introduction %>
+
+</div>
+<div>
+  <%= f.label :価格 %>
+</div>
+<div>
+  <%= f.text_field :price %>
+
+</div>
+<br>
+  <%= f.submit 'Create' %>
+
+<% end %>
+</div>
+</div>
+</div>
