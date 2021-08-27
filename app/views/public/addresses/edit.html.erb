@@ -1,2 +1,23 @@
 <h1>Public::Addresses#edit</h1>
 <p>Find me in app/views/public/addresses/edit.html.erb</p>
+
+<div class="container">
+  <div class="row">
+    <div class="col-mx-1">
+      <h1>配送先登録</h1>
+      <%= form_with model: @address, url:"/addresses/#{@address.customer_id}",  method: :patch do |f| %>
+      <%= f.label :宛名 %><br>
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+      <br><br>
+      <%= f.label :郵便番号 %><br>
+      <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+      <br><br>
+      <%= f.label :住所 %><br>
+      <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+      <br><br>
+      <%= f.submit "更新", class:"btn btn-primary" %>
+      <% end %>
+      </tr>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,26 @@ class Public::AddressesController < ApplicationController
     @customer = current_customer
   end
 
+  def create
+    @address = Address.new(address_params)
+    @address.customer_id = current_customer.id
+    @address.save
+    flash[:notice]="You have created addresses successfully."
+    redirect_to  addresses_path
+  end
+
   def edit
+    @address = Address.find(params[:id])
+  end
+  
+  def destroy
+  end
+  
+  def update
+    @address = Address.find(params[:id])
+    @address.update(address_params)
+    flash[:notice]="Book was successfully updated."
+    redirect_to addresses_path
   end
   
  private
