@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 root to: 'public/homes#top'
 get 'about' => 'public/homes#about'
 get 'items' => 'public/items#index'
+get 'items/:id' => 'public/items#show', as: 'item'
+post 'cart_items' => 'public/cart_items#create'
+
+get 'cart_items' => 'public/cart_items#index'
   scope module: 'public' do
     get 'customers/edit' => 'customers#edit'
     get 'customers/my_page' => 'customers#show'
