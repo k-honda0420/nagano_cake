@@ -4,7 +4,7 @@ class CartItem < ApplicationRecord
   belongs_to :item
   
   #def total_price
-	#	item.price * cart_item.amount
+	#	line_items.to_a.sum { |item| item.total_price }
 	#end
 	
 end

@@ -1,14 +1,23 @@
 Rails.application.routes.draw do
 
 
+
+#  namespace :public do
+#    get 'orders/new'
+#    get 'orders/complete'
+#    get 'orders/index'
+#    get 'orders/show'
+#  end
   devise_for :customers
 root to: 'public/homes#top'
 get 'about' => 'public/homes#about'
 get 'items' => 'public/items#index'
 get 'items/:id' => 'public/items#show', as: 'item'
 post 'cart_items' => 'public/cart_items#create'
-
 get 'cart_items' => 'public/cart_items#index'
+
+get 'orders/new' => 'public/orders#new'
+post 'orders/comfirm' => 'public/orders#comfirm'
   scope module: 'public' do
     get 'customers/edit' => 'customers#edit'
     get 'customers/my_page' => 'customers#show'

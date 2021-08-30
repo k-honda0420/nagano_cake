@@ -1,0 +1,12 @@
+<h2>注文確認画面</h2>
+  <%= @order.amount %>
+  <%= @order.quantity %>
+  <%= @item.name %>
+  <%= @item.price %>
+<%= form_with model:[@item, @order], url:(item_order_path) do |f| %>
+  <%= f.hidden_field :amount %>
+  <%= f.hidden_field :quantity %>
+  <%= f.submit %>
+<% end %>
+
+<!-- https://qiita.com/thk__u/items/2a86078507ae5347a2c1 -->
