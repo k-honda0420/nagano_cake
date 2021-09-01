@@ -1,11 +1,35 @@
-<h2>注文確認画面</h2>
-  <%= @cart_items.amount %>
 
-  <%#= @item.name %>
-  <%#= @item.price %>
-<%#= form_with model:[@item, @order], url:(item_order_path) do |f| %>
-  <%#= f.hidden_field :amount %>
-  <%#= f.hidden_field :quantity %>
-  <%#= f.submit %>
-<%# end %>
+
+<div class="col-md-8 offset-md-1">  
+<h2>注文確認画面</h2>
+<table class="table table">
+  <tr>
+  　<th>商品名</th>
+    <th>単価</th>
+    <th>数量</th>
+    <th>合計金額</th>
+  </tr>
+
+<% @order.total_payment = 0 %>
+<% @cart_items.each do |cart_item| %>
+<%#= form_with(model: @cart_items, local: true, url: orders_complete_path, method: :post) do |f| %>
+<tr>
+  <td><%= cart_item.item.name %></td>
+  <td><%= cart_item.item.price %></td>
+  <td><%= cart_item.amount %></td>
+  <td><%= cart_item.item.price*cart_item.amount %></td>
+</tr>
+<% @order.total_payment =cart_item.item.price*cart_item.amount+@order.total_payment %>
+<% end %>
+</table>
+</div>
+<hr>　<!--ライン-->
+<div class="col-md-4 offset-md-4">  
+<h4>送料<%= @order.shipping_cost =1000 %>円
+<span class="col-md-4 offset-md-5">  
+合計<%= @order.total_payment =@order.shipping_cost+@order.total_payment %>円</h4>
+</div></span>
+
+<%= link_to "注文する", orders_path,method: :POST , class: "btn btn-primary" %>　
+
 

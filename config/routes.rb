@@ -18,6 +18,9 @@ get 'cart_items' => 'public/cart_items#index'
 
 get 'orders/new' => 'public/orders#new'
 post 'orders/comfirm' => 'public/orders#comfirm'
+post 'orders' => 'public/orders#create'
+get 'orders/complete' => 'public/orders#complete'
+
   scope module: 'public' do
     get 'customers/edit' => 'customers#edit'
     get 'customers/my_page' => 'customers#show'
