@@ -12,7 +12,6 @@
 
 <% @order.total_payment = 0 %>
 <% @cart_items.each do |cart_item| %>
-<%#= form_with(model: @cart_items, local: true, url: orders_complete_path, method: :post) do |f| %>
 <tr>
   <td><%= cart_item.item.name %></td>
   <td><%= cart_item.item.price %></td>
@@ -29,7 +28,20 @@
 <span class="col-md-4 offset-md-5">  
 合計<%= @order.total_payment =@order.shipping_cost+@order.total_payment %>円</h4>
 </div></span>
-
+<div class="col-md-8 offset-md-1">  
+<hr>　<!--ライン-->
+<h4>支払方法</h4>
+<%= @order.payment_method %>
+<hr>　<!--ライン-->
+<h4>お届け先</h4>
+<h6>郵便番号</h6><br>
+<%= @order.postal_code %>
+<h6>住所</h6><br>
+<%= @order.address %>
+<h6>宛名</h6><br>
+<%= @order.name %><br>
 <%= link_to "注文する", orders_path,method: :POST , class: "btn btn-primary" %>　
+</div>
+
 
 
