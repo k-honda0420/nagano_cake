@@ -3,5 +3,6 @@ class Public::HomesController < ApplicationController
   end
 
   def top
+    @item = Item.all
   end
 end

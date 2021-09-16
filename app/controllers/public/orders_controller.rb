@@ -5,14 +5,18 @@ class Public::OrdersController < ApplicationController
   end
 
   def complete
+    @cart_items = current_customer.cart_items
+
+    @cart_items.destroy_all
   end
 
   def index
+    @order = current_customer.orders
   end
 
   def show
     @order = Order.find(params[:id])
-    @order = Order.customer
+    @order_details = OrderDetail.all
 
   end
 
@@ -42,7 +46,18 @@ class Public::OrdersController < ApplicationController
 #    @order.payment_method = Order.find(params[:payment_method])
 #    @order.total_payment = Order.find(params[:total_payment])
     @order.save
-
+#    @order_detail.item_id = CartItems.item_id
+#    @order_detail.price = CartItems.price
+#    @order_detail.amount = CartItems.amount
+    @cart_items = current_customer.cart_items
+    @cart_items.each do |cart_item|
+      @order_detail = OrderDetail.new
+      @order_detail.item_id = cart_item.item_id
+      @order_detail.price = cart_item.item.price
+      @order_detail.amount = cart_item.amount
+      @order_detail.order_id = @order.id
+      @order_detail.save
+    end
     redirect_to orders_complete_path
   end
 

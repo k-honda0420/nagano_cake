@@ -1,6 +1,25 @@
 <div class="container">
   <div class="row">
     <div class="col-mx-1">
+      <table class="table imte">
+        <h2>注文した商品</h2>
+        <th>商品名<br>
+        <th>単価</th>
+        <th>数量</th>
+        <th>合計価格</th>
+        <% @order.order_details.each do |order_detail| %>
+        <tr>
+          <td><%= order_detail.item.name %></td>
+          <td><%= order_detail.price %></td>
+          <td><%= order_detail.amount %></td>
+          <td><%= order_detail.amount*order_detail.price %></td>
+        </tr>
+        <% end %>
+        </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-mx-1">
       <h1>Order detail</h1>
       <p>注文ID</p>
       <%= @order.id %>
@@ -24,7 +43,8 @@
       <%= @order.created_at.strftime('%Y/%m/%d %H:%M') %>
       <p>更新日時</p>
       <%= @order.updated_at.strftime('%Y/%m/%d %H:%M') %>
-      <%= link_to "back", admin_orders_path(customer), class:"btn btn-success"%>
+      <br>
+      <%= link_to "back", admin_orders_path, class:"btn btn-success"%>
 
     </div>
   </div>

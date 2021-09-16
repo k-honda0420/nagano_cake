@@ -1,5 +1,3 @@
-<h1>Admin::Customers#index</h1>
-<p>Find me in app/views/admin/customers/index.html.erb</p>
 
 
 <div class="container">
@@ -16,7 +14,6 @@
 		<th>last_name_kana</th>
 		<th>first_name_kana</th>
 		<th>email</th>
-		<th>encrypted_password</th>
 		<th>postal_code</th>
 		<th>address</th>
 		<th>telephone_number</th>
@@ -26,20 +23,31 @@
 		<th></th>
          <% @customer.each do |customer| %>
             <tr>
-						<td><%= customer.last_name %></td>
-						<td><%= customer.first_name %></td>
-						<td><%= customer.last_name_kana %></td>
-						<td><%= customer.first_name_kana %></td>
-						<td><%= customer.email %></td>
-						<td><%= customer.encrypted_password %></td>
-						<td><%= customer.postal_code %></td>
-						<td><%= customer.address %></td>
-						<td><%= customer.telephone_number %></td>
-						<td><%= customer.is_deleted %></td>
-						<td><%= customer.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-						<td><%= customer.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
-						<td><%= link_to "Edit",  edit_admin_customer_path(customer), class:"btn btn-success"%></td>
-						<% end %>
+            	
+				<td><%= link_to admin_customer_path(customer) do %>
+					<%= customer.last_name %>
+					<% end %>
+					</td>
+				<td><%= link_to admin_customer_path(customer) do %>
+					<%= customer.first_name %></td>
+				<% end %>
+				<td><%= customer.last_name_kana %></td>
+				<td><%= customer.first_name_kana %></td>
+				<td><%= customer.email %></td>
+				<td><%= customer.postal_code %></td>
+				<td><%= customer.address %></td>
+				<td><%= customer.telephone_number %></td>
+				<td>
+					<% if customer.is_active %>
+          退会済み
+          <% else %>
+          -
+          <% end %>
+					<%#= customer.is_active %></td>
+				<td><%= customer.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+				<td><%= customer.updated_at.strftime('%Y/%m/%d %H:%M') %></td>
+				<td><%= link_to "Edit",  edit_admin_customer_path(customer), class:"btn btn-success"%></td>
+				<% end %>
           </tr>
         </table>
 </div>

@@ -2,7 +2,7 @@
   <div class="row">
     
    <div class="col-mx-1">
-     <h1>User detail     マイページ</h1>
+     <h1>マイページ</h1>
         <table class="table table-show">
           <tr>
             <h3>名前</h3>
@@ -24,7 +24,10 @@
           <h3><%= @customer.created_at.strftime("%Y-%m-%d %H:%M") %></h3>
           <h3>更新日時</h3>
           <h3><%= @customer.updated_at.strftime("%Y-%m-%d %H:%M") %></h3>
-          <%= link_to "Edit", customers_edit_path, class:"btn btn-success"%>
+          <%= link_to "会員情報編集", edit_customer_path(@customer), class:"btn btn-success"%>
+          <%= link_to "配送先一覧", addresses_path, class:"btn btn-info"%>
+          <%= link_to "注文履歴一覧", orders_index_path, class:"btn btn-info"%>
+          <%= link_to "退会", customers_unsubscribe_path, class:"btn btn-info"%>
 
           </tr>
       </div>

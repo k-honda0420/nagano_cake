@@ -1,12 +1,8 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
-
-
 <div class="container">
   <div class="row">
 
 <div class="col-mx-1">
-<h1>User detail</h1>
+<h1>注文一覧</h1>
       <table class="table user-show">
 
 		<th>注文番号</th>
@@ -18,12 +14,13 @@
             <tr>
 						<td><%= order.id %></td>
 						<td><%= order.created_at.strftime('%Y/%m/%d %H:%M') %></td>
-						<td><%= order.total_payment %></td>
+						<td><%= order.total_payment %>円</td>
 						<td><%= order.status %></td>
-						<td><%= link_to "Edit", admin_order_path(customer), class:"btn btn-success"%></td>
+						<td><%= link_to "show", admin_order_path(order.id), class:"btn btn-success"%></td>
 						<% end %>
           </tr>
         </table>
+        <%= link_to "ジャンル一覧へ", admin_genres_path %>
 </div>
 </div>
 </div>

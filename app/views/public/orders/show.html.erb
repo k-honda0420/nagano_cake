@@ -1,2 +1,50 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+  <div class="container">
+  <div class="row">
+    <div class="col-mx-1">
+      <table class="table imte">
+        <h2>注文した商品</h2>
+        <th>商品名<br>
+        <th>単価</th>
+        <th>数量</th>
+        <th>合計価格</th>
+        <% @order.order_details.each do |order_detail| %>
+        <tr>
+          <td><%= order_detail.item.name %></td>
+          <td><%= order_detail.price %></td>
+          <td><%= order_detail.amount %></td>
+          <td><%= order_detail.amount*order_detail.price %></td>
+        </tr>
+        <% end %>
+        </table>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-mx-1">
+      <h1>注文履歴詳細</h1>
+      <p>注文ID</p>
+      <%= @order.id %>
+      <p>会員ID</p>
+      <%= @order.customer_id %>
+      <p>配送先郵便番号</p>
+      <%= @order.postal_code %>
+      <p>配送先住所</p>
+      <%= @order.address %>
+      <p>配送先宛名</p>
+      <%= @order.name %>
+      <p>送料</p>
+      <%= @order.shipping_cost %>
+      <p>請求額</p>
+      <%= @order.total_payment %>
+      <p>支払方法</p>
+      <%= @order.payment_method %>
+      <p>登録日時</p>
+      <%= @order.created_at.strftime('%Y/%m/%d %H:%M') %>
+      <br>
+      <hr>
+
+    </div>
+  </div>
+   <%= link_to "back", orders_index_path, class:"btn btn-success"%>
+</div>
